@@ -1,15 +1,23 @@
-﻿var result = GenerateNumbers(10).Where(n=>n%3==0);
+﻿var result = GenerateNumbers(10)
+    .Where(n =>
+    {
+        return n % 2 == 0;
+    }).Select(n=>
+    {
+       return n * 3;
+    });
+               
+
 foreach (var number in result)
 {
     Console.WriteLine(number);
 }
-Console.WriteLine(result);
 IEnumerable<int> GenerateNumbers(int max)
 {
-    var numbers = new List<int>();
+   // var numbers = new List<int>();
     for(int i = 0; i<= max; i++)
     {
-        numbers.Add(i);
+        yield return i; //return the value one by one .
     }
-    return numbers;
+   // return numbers;
 }
